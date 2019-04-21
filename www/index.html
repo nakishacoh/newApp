@@ -258,28 +258,28 @@ frame.on("ready", function() {
     });
 
 
-  frame.on("resize", () => {
-      stage = frame.stage;
-      stageW = frame.width;
-      stageH = frame.height;
-      background.scaleTo(stage, 100).addTo(stage).pos({x:0,y:0,bottom:true}).bot();
-      zog("background");
-
-      // Shakira
-      shakira.scaleTo(stage,stageW*.05, stageH*0.07).pos(stageW*.13, stageH*0.01, false, true).addTo(stage);
-      shakira2.scaleTo(stage,stageW*.05, stageH*.07).pos(stageW *-.10, stageH*0.01, false, true).addTo(stage);
-      zog("Shakira-responsive");
-
-      // Beyonce
-      beyonce.scaleTo(stage,stageW*.05, stageH*0.07).pos(stageW*.4, stageH*0.01, false, true).addTo(stage);
-      beyonce2.scaleTo(stage,stageW*.5, stageH*.11).pos(stageW *.35, stageH*-0.04, false, true).addTo(stage);
-
-      // Beyonce
-      ariana.scaleTo(stage,stageW*.05, stageH*0.07).pos(stageW*.7, stageH*0.01, false, true).addTo(stage);
-      ariana2.scaleTo(stage,stageW*.5, stageH*.075).pos(stageW *.6, stageH*-0.01, false, true).addTo(stage);
-
-      stage.update();
-  });
+  // frame.on("resize", () => {
+  //     stage = frame.stage;
+  //     stageW = frame.width;
+  //     stageH = frame.height;
+  //     background.scaleTo(stage, 100).addTo(stage).pos({x:0,y:0,bottom:true}).bot();
+  //     zog("background");
+  //
+  //     // Shakira
+  //     shakira.scaleTo(background,stageW*.05, stageH*0.07).pos(stageW*.13, stageH*0.01, false, true).addTo(backstage);
+  //     shakira2.scaleTo(background,stageW*.05, stageH*.07).pos(stageW *-.10, stageH*0.01, false, true).addTo(background);
+  //     zog("Shakira-responsive");
+  //
+  //     // Beyonce
+  //     beyonce.scaleTo(stage,stageW*.05, stageH*0.07).pos(stageW*.4, stageH*0.01, false, true).addTo(backstage);
+  //     beyonce2.scaleTo(stage,stageW*.5, stageH*.11).pos(stageW *.35, stageH*-0.04, false, true).addTo(backstage);
+  //
+  //     // Beyonce
+  //     ariana.scaleTo(stage,stageW*.05, stageH*0.07).pos(stageW*.7, stageH*0.01, false, true).addTo(backstage);
+  //     ariana2.scaleTo(stage,stageW*.5, stageH*.075).pos(stageW *.6, stageH*-0.01, false, true).addTo(backstage);
+  //
+  //     stage.update();
+  // });
 }
 
     stage.update(); // this is needed to show any changes
