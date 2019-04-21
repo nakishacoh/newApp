@@ -78,7 +78,7 @@ frame.on("ready", function() {
     intro()
     function intro(){
       var logo = frame.asset("logoCV.png").addTo(intro).sca(.3).pos(100,-100);
-      // var background = frame.asset("awardBackdrop.jpg");
+      var background = frame.asset("awardBackdrop.jpg");
 
       var intro = new Container(stageW, stageH).addTo();
 
@@ -93,7 +93,7 @@ frame.on("ready", function() {
                 intro.removeFrom();
                 logo.removeFrom();
                 // startNtn.removeFrom();
-                // background.alp(1);
+                background.alp(1);
                     playGame();
 
             })
@@ -101,10 +101,10 @@ frame.on("ready", function() {
     }
 
   function playGame(){
-    // background.scaleTo(stage, 100).center(main).pos(0, 0, false, true);
-    // background.addTo(main);
+    background.scaleTo(stage, 100).center(main).pos(0, 0, false, true);
+    background.addTo(main);
     // pizzazz.listIcons();
-    var background = frame.asset("awardBackdrop.jpg").alp(0).addTo(main);
+    // var background = frame.asset("awardBackdrop.jpg").alp(0).addTo(main);
 
 
 
@@ -269,28 +269,28 @@ frame.on("ready", function() {
     });
 
 
-  frame.on("resize", () => {
-      stage = frame.stage;
-      stageW = frame.width;
-      stageH = frame.height;
-      // background.scaleTo(stage, 100).addTo(stage).pos({x:0,y:0,bottom:true}).bot();
-      zog("background");
-
-      // Shakira
-      shakira.scaleTo(main).pos(stageW*.13, stageH*0.01, false, true).addTo(main);
-      shakira2.scaleTo(main).pos(stageW *-.10, stageH*0.01, false, true).addTo(main);
-      zog("Shakira-responsive");
-
-      // // Beyonce
-      // beyonce.scaleTo(stage,stageW*.05, stageH*0.07).pos(stageW*.4, stageH*0.01, false, true).addTo(stage);
-      // beyonce2.scaleTo(stage,stageW*.5, stageH*.11).pos(stageW *.35, stageH*-0.04, false, true).addTo(stage);
-      //
-      // // Beyonce
-      // ariana.scaleTo(stage,stageW*.05, stageH*0.07).pos(stageW*.7, stageH*0.01, false, true).addTo(stage);
-      // ariana2.scaleTo(stage,stageW*.5, stageH*.075).pos(stageW *.6, stageH*-0.01, false, true).addTo(stage);
-
-      stage.update();
-  });
+  // frame.on("resize", () => {
+  //     stage = frame.stage;
+  //     stageW = frame.width;
+  //     stageH = frame.height;
+  //     // background.scaleTo(stage, 100).addTo(stage).pos({x:0,y:0,bottom:true}).bot();
+  //     zog("background");
+  //
+  //     // Shakira
+  //     shakira.scaleTo(main).pos(stageW*.13, stageH*0.01, false, true).addTo(main);
+  //     shakira2.scaleTo(main).pos(stageW *-.10, stageH*0.01, false, true).addTo(main);
+  //     zog("Shakira-responsive");
+  //
+  //     // // Beyonce
+  //     // beyonce.scaleTo(stage,stageW*.05, stageH*0.07).pos(stageW*.4, stageH*0.01, false, true).addTo(stage);
+  //     // beyonce2.scaleTo(stage,stageW*.5, stageH*.11).pos(stageW *.35, stageH*-0.04, false, true).addTo(stage);
+  //     //
+  //     // // Beyonce
+  //     // ariana.scaleTo(stage,stageW*.05, stageH*0.07).pos(stageW*.7, stageH*0.01, false, true).addTo(stage);
+  //     // ariana2.scaleTo(stage,stageW*.5, stageH*.075).pos(stageW *.6, stageH*-0.01, false, true).addTo(stage);
+  //
+  //     stage.update();
+  // });
 }
 
     stage.update(); // this is needed to show any changes
