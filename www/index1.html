@@ -1,0 +1,298 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Culture Vulture</title>
+
+<!-- Welcome to ZIM at https://zimjs.com - Code Creativity!                              -->
+<!-- ZIM runs on the HTML Canvas powered by JavaScript and CreateJS https://createjs.com -->
+<!-- Founded by Inventor Dan Zen - http://danzen.com - Canadian New Media Award Winner   -->
+<!-- ZIM is free to use. You can donate to help improve ZIM at https://zimjs.com/donate  -->
+
+<script src="https://d309knd7es5f10.cloudfront.net/createjs_1.1_min.js"></script>
+<script src="https://d309knd7es5f10.cloudfront.net/zim_10.0.1.js"></script>
+
+<!-- use zimjs.com/distill for minified individual functions! -->
+
+<script src="https://d309knd7es5f10.cloudfront.net/pizzazz_02.js"></script>
+
+
+<script>
+
+// SCALING OPTIONS
+// scaling can have values as follows with full being the default
+// "fit"	sets canvas and stage to dimensions and scales to fit inside window size
+// "outside"	sets canvas and stage to dimensions and scales to fit outside window size
+// "full"	sets stage to window size with no scaling
+// "tagID"	add canvas to HTML tag of ID - set to dimensions if provided - no scaling
+
+var scaling = "full"; // this will resize to fit inside the screen dimensions
+var width = 1024;
+var height = 768;
+var color = light; // ZIM colors like green, blue, pink, faint, clear, etc.
+var outerColor = dark; // any HTML colors like "violet", "#333", etc. are fine to use
+var assets = ["logoCV.png","awardBackdrop.jpg", "shakira1.png", "shakira2.png", "shakira1.mp3","shakira2.mp3", "beyonce1.png", "beyonce2.png","beyonce1.mp3","beyonce2.mp3", "arianag1.png","arianag2.png","ariana1.mp3","ariana2.mp3"];
+var path = "assets1/";
+
+var frame = new Frame(scaling, width, height, color, outerColor, assets, path, new Waiter());
+frame.on("ready", function() {
+    zog("ready from ZIM Frame"); // logs in console (F12 - choose console)
+
+    var stage = frame.stage;
+    var stageW = frame.width;
+    var stageH = frame.height;
+    var main = new Container(stageW, stageH).addTo();
+    // var intro = new Container(stageW, stageH).addTo();
+    // frame.asset("logoCV.png").addTo(intro).sca(.5);
+
+    var background = frame.asset("awardBackdrop.jpg").alp(0);
+
+    // Songs
+    var shakHips = frame.asset("shakira2.mp3").play();
+    shakHips.paused = true;
+    var shakForget = frame.asset("shakira1.mp3").play();
+    shakForget.paused = true;
+
+    var yonce = frame.asset("beyonce1.mp3").play();
+    yonce.paused = true;
+    var yonce2 = frame.asset("beyonce2.mp3").play();
+    yonce2.paused = true;
+
+    var grande = frame.asset("ariana1.mp3").play();
+    grande.paused = true;
+
+    var grande2 = frame.asset("ariana2.mp3").play();
+    grande2.paused = true;
+
+    //add images
+    // var shakira = frame.asset("shakira1.png");
+    // var shakira2 = frame.asset("shakira2.png");
+
+    // var beyonce = frame.asset("beyonce1.png");
+    // var beyonce2 = frame.asset("beyonce2.png");
+
+    // var ariana = frame.asset("arianag1.png");
+    // var ariana2 = frame.asset("arianag2.png");
+
+
+    intro()
+    function intro(){
+      var logo = frame.asset("logoCV.png").addTo(intro).sca(.5);
+      var background = frame.asset("awardBackdrop.jpg");
+
+      var intro = new Container(stageW, stageH).addTo();
+
+        var startBtn= new Button({
+            width:300,
+            label:"Let's Play"
+
+          }).center(intro)
+
+            startBtn.on("click",function(){
+                intro.removeFrom();
+                logo.removeFrom();
+                // startNtn.removeFrom();
+                background.alp(1);
+                    playGame();
+
+            })
+          stage.update();
+    }
+
+  function playGame(){
+    background.scaleTo(stage, 100).center(main).pos(0, 0, false, true);
+    background.addTo(main);
+    // pizzazz.listIcons();
+    // var background = frame.asset("awardBackdrop.jpg").alp(0).addTo(main);
+
+
+
+    //add images
+    var shakira = frame.asset("shakira1.png").addTo(main).sca(.5).mov(170,190);
+    var shakira2 = frame.asset("shakira2.png").sca(.7).mov(-160,220);
+
+    var beyonce = frame.asset("beyonce1.png").addTo(main).sca(.4).mov(480,180);
+    var beyonce2 = frame.asset("beyonce2.png").sca(.3).mov(380,40);
+
+    var ariana = frame.asset("arianag1.png").addTo(main).sca(.2).mov(850,210);
+    var ariana2 = frame.asset("arianag2.png").sca(.7).mov(720,160);
+
+//
+//
+//     // shakira Toggle
+    shakira.on("click", function(){
+      zog("click");
+      shakHips.play();
+      if (shakira.toggled){
+        // zog("click")
+        // shakForget.paused = true;
+        // shakHips.play();
+
+        shakHips.paused = false;
+        // if(shakHips.position >= shakHips.duration){
+        //   shakHips.position = 0;
+          // shakHips.play();
+        // }
+
+
+      } else {
+        shakForget.paused = false;
+        shakHips.paused = true;
+
+        frame.asset("shakira1.png").removeFrom(main);
+        frame.asset("shakira2.png").addTo(main);
+      }
+    });
+
+    shakira2.on("click", function(){
+        shakForget.play();
+      if (shakira2.toggled){
+        // shakHips.paused = true;
+
+        shakForget.paused = false;
+
+        if(shakForget.position >= shakForget.duration){
+          shakForget.position = 0;
+          // shakForget.play();
+        }
+
+      } else {
+        shakHips.paused = false;
+        shakForget.paused = true;
+
+        frame.asset("shakira2.png").removeFrom(main);
+        frame.asset("shakira1.png").addTo(main);
+      }
+    });
+
+//     //Beyonce
+    beyonce.on("click", function(){
+      zog("click");
+      yonce.play();
+      if (beyonce.toggled){
+        // zog("click")
+        // shakForget.paused = true;
+        // shakHips.play();
+
+        yonce.paused = false;
+        // if(shakHips.position >= shakHips.duration){
+        //   shakHips.position = 0;
+          // shakHips.play();
+        // }
+
+
+      } else {
+        yonce2.paused = false;
+        yonce.paused = true;
+
+        frame.asset("beyonce1.png").removeFrom(main);
+        frame.asset("beyonce2.png").addTo(main);
+      }
+    });
+//
+    beyonce2.on("click", function(){
+        yonce2.play();
+      if (beyonce2.toggled){
+        // shakHips.paused = true;
+
+        yonce2.paused = false;
+
+        // if(yonce2.position >= shakForget.duration){
+        //   shakForget.position = 0;
+        //   // shakForget.play();
+        // }
+
+      } else {
+        yonce.paused = false;
+        yonce2.paused = true;
+
+        frame.asset("beyonce2.png").removeFrom(main);
+        frame.asset("beyonce1.png").addTo(main);
+      }
+    });
+
+    //Ariana Toggle
+    ariana.on("click", function(){
+      zog("click");
+      grande.play();
+      if (ariana.toggled){
+        // zog("click")
+        // shakForget.paused = true;
+        // shakHips.play();
+
+        grande.paused = false;
+        // if(shakHips.position >= shakHips.duration){
+        //   shakHips.position = 0;
+          // shakHips.play();
+        // }
+
+
+      } else {
+        grande2.paused = false;
+        grande.paused = true;
+
+        ariana.removeFrom(main);
+        ariana2.addTo(main);
+      }
+    });
+
+    ariana2.on("click", function(){
+        grande2.play();
+      if (ariana2.toggled){
+        // shakHips.paused = true;
+
+        grande2.paused = false;
+
+        // if(grande2.position >= ariana2.duration){
+        //   shakForget.position = 0;
+        //   // shakForget.play();
+        // }
+
+      } else {
+        grande.paused = false;
+        grande2.paused = true;
+
+        ariana2.removeFrom(main);
+        ariana.addTo(main);
+      }
+    });
+
+
+  frame.on("resize", () => {
+      stage = frame.stage;
+      stageW = frame.width;
+      stageH = frame.height;
+      background.scaleTo(stage, 100).addTo(stage).pos({x:0,y:0,bottom:true}).bot();
+      zog("background");
+
+      // Shakira
+      shakira.scaleTo(stage,stageW*.05, stageH*0.07).pos(stageW*.13, stageH*0.01, false, true).addTo(stage);
+      shakira2.scaleTo(stage,stageW*.05, stageH*.07).pos(stageW *-.10, stageH*0.01, false, true).addTo(stage);
+      zog("Shakira-responsive");
+
+      // Beyonce
+      beyonce.scaleTo(stage,stageW*.05, stageH*0.07).pos(stageW*.4, stageH*0.01, false, true).addTo(stage);
+      beyonce2.scaleTo(stage,stageW*.5, stageH*.11).pos(stageW *.35, stageH*-0.04, false, true).addTo(stage);
+
+      // Beyonce
+      ariana.scaleTo(stage,stageW*.05, stageH*0.07).pos(stageW*.7, stageH*0.01, false, true).addTo(stage);
+      ariana2.scaleTo(stage,stageW*.5, stageH*.075).pos(stageW *.6, stageH*-0.01, false, true).addTo(stage);
+
+      stage.update();
+  });
+}
+
+    stage.update(); // this is needed to show any changes
+
+}); // end of ready
+
+</script>
+
+<meta name="viewport" content="width=device-width, user-scalable=no" />
+
+</head>
+
+<body>
+<!-- canvas with id="myCanvas" is made by zim Frame -->
+</body>
+</html>
