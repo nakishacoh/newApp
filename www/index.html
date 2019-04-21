@@ -29,7 +29,7 @@
 var scaling = "full"; // this will resize to fit inside the screen dimensions
 var width = 1024;
 var height = 768;
-var color = light; // ZIM colors like green, blue, pink, faint, clear, etc.
+var color = yellow; // ZIM colors like green, blue, pink, faint, clear, etc.
 var outerColor = dark; // any HTML colors like "violet", "#333", etc. are fine to use
 var assets = ["logoCV.png","awardBackdrop.jpg", "shakira1.png", "shakira2.png", "shakira1.mp3","shakira2.mp3", "beyonce1.png", "beyonce2.png","beyonce1.mp3","beyonce2.mp3", "arianag1.png","arianag2.png","ariana1.mp3","ariana2.mp3"];
 var path = "assets1/";
@@ -45,7 +45,7 @@ frame.on("ready", function() {
     // var intro = new Container(stageW, stageH).addTo();
     // frame.asset("logoCV.png").addTo(intro).sca(.5);
 
-    var background = frame.asset("awardBackdrop.jpg").alp(0);
+    // var background = frame.asset("awardBackdrop.jpg").alp(0);
 
     // Songs
     var shakHips = frame.asset("shakira2.mp3").play();
@@ -78,7 +78,7 @@ frame.on("ready", function() {
     intro()
     function intro(){
       var logo = frame.asset("logoCV.png").addTo(intro).sca(.5);
-      var background = frame.asset("awardBackdrop.jpg");
+      // var background = frame.asset("awardBackdrop.jpg");
 
       var intro = new Container(stageW, stageH).addTo();
 
@@ -92,7 +92,7 @@ frame.on("ready", function() {
                 intro.removeFrom();
                 logo.removeFrom();
                 // startNtn.removeFrom();
-                background.alp(1);
+                // background.alp(1);
                     playGame();
 
             })
@@ -100,8 +100,8 @@ frame.on("ready", function() {
     }
 
   function playGame(){
-    background.scaleTo(stage, 100).center(main).pos(0, 0, false, true);
-    background.addTo(main);
+    // background.scaleTo(stage, 100).center(main).pos(0, 0, false, true);
+    // background.addTo(main);
     // pizzazz.listIcons();
     // var background = frame.asset("awardBackdrop.jpg").alp(0).addTo(main);
 
@@ -258,28 +258,28 @@ frame.on("ready", function() {
     });
 
 
-  // frame.on("resize", () => {
-  //     stage = frame.stage;
-  //     stageW = frame.width;
-  //     stageH = frame.height;
-  //     background.scaleTo(stage, 100).addTo(stage).pos({x:0,y:0,bottom:true}).bot();
-  //     zog("background");
-  //
-  //     // Shakira
-  //     shakira.scaleTo(background,stageW*.05, stageH*0.07).pos(stageW*.13, stageH*0.01, false, true).addTo(backstage);
-  //     shakira2.scaleTo(background,stageW*.05, stageH*.07).pos(stageW *-.10, stageH*0.01, false, true).addTo(background);
-  //     zog("Shakira-responsive");
-  //
-  //     // Beyonce
-  //     beyonce.scaleTo(stage,stageW*.05, stageH*0.07).pos(stageW*.4, stageH*0.01, false, true).addTo(backstage);
-  //     beyonce2.scaleTo(stage,stageW*.5, stageH*.11).pos(stageW *.35, stageH*-0.04, false, true).addTo(backstage);
-  //
-  //     // Beyonce
-  //     ariana.scaleTo(stage,stageW*.05, stageH*0.07).pos(stageW*.7, stageH*0.01, false, true).addTo(backstage);
-  //     ariana2.scaleTo(stage,stageW*.5, stageH*.075).pos(stageW *.6, stageH*-0.01, false, true).addTo(backstage);
-  //
-  //     stage.update();
-  // });
+  frame.on("resize", () => {
+      stage = frame.stage;
+      stageW = frame.width;
+      stageH = frame.height;
+      // background.scaleTo(stage, 100).addTo(stage).pos({x:0,y:0,bottom:true}).bot();
+      zog("background");
+
+      // Shakira
+      shakira.scaleTo(stage,stageW*.05, stageH*0.07).loc(stageW*.13, stageH*0.01, false, true).addTo(stage);
+      shakira2.scaleTo(stage,stageW*.05, stageH*.07).loc(stageW *-.10, stageH*0.01, false, true).addTo(stage);
+      zog("Shakira-responsive");
+
+      // Beyonce
+      beyonce.scaleTo(stage,stageW*.05, stageH*0.07).pos(stageW*.4, stageH*0.01, false, true).addTo(stage);
+      beyonce2.scaleTo(stage,stageW*.5, stageH*.11).pos(stageW *.35, stageH*-0.04, false, true).addTo(stage);
+
+      // Beyonce
+      ariana.scaleTo(stage,stageW*.05, stageH*0.07).pos(stageW*.7, stageH*0.01, false, true).addTo(stage);
+      ariana2.scaleTo(stage,stageW*.5, stageH*.075).pos(stageW *.6, stageH*-0.01, false, true).addTo(stage);
+
+      stage.update();
+  });
 }
 
     stage.update(); // this is needed to show any changes
